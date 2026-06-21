@@ -1,0 +1,5 @@
+.env
+.hubstaff_tokens.json
+.venv/
+__pycache__/
+*.csv
