@@ -1,28 +1,47 @@
 # Hubstaff API Exporter
 
-This project connects to the Hubstaff API using a Personal Access Token, exchanges the refresh token for an access token, and exports organization data into CSV files for reporting and analysis.
+A Python-based automation tool that securely connects to the Hubstaff API and exports organization, project, member, and available activity data into CSV files for reporting, analysis, and downstream business workflows.
+
+## Overview
+
+Hubstaff data is often needed outside the platform for operational reporting, project analysis, staffing visibility, payroll review, or integration with internal tools. Manually collecting and organizing these exports is repetitive and can introduce errors.
+
+Hubstaff API Exporter automates this workflow. It uses Hubstaff's OAuth 2.0 refresh-token flow to obtain an access token, retrieves available organization-level data, saves the results in structured CSV files, and creates a Markdown summary of the export run.
 
 ## Features
 
-- Authenticates with Hubstaff using OAuth 2.0 refresh-token flow
-- Stores rotated refresh tokens securely in a local cache file
+- Authenticates with Hubstaff through the OAuth 2.0 refresh-token flow
+- Uses a refresh token to request a short-lived access token
+- Handles refresh-token rotation and saves the latest token to a local cache file
 - Exports Hubstaff organization data
 - Exports Hubstaff project data
 - Exports Hubstaff member data
-- Exports Hubstaff activity data when available
-- Generates a markdown export summary
+- Exports activity data when it is available to the connected account
+- Generates structured CSV files for reporting and analysis
+- Creates a Markdown export summary for each completed run
+- Uses environment variables to keep credentials outside source control
 
 ## Exported Files
 
-- `hubstaff_organizations.csv`
-- `hubstaff_projects.csv`
-- `hubstaff_members.csv`
-- `hubstaff_activities.csv`
-- `hubstaff_export_summary.md`
+| File | Description |
+|---|---|
+| `hubstaff_organizations.csv` | Organization information returned by the Hubstaff API |
+| `hubstaff_projects.csv` | Project data associated with the available organization(s) |
+| `hubstaff_members.csv` | Organization member data returned by the API |
+| `hubstaff_activities.csv` | Available activity data, when supported and accessible |
+| `hubstaff_export_summary.md` | Summary of the export run, including generated files and record counts |
+
+## Requirements
+
+- Python [version used by this project]
+- A Hubstaff account with API access
+- A Hubstaff OAuth 2.0 refresh token
+- Access to the Hubstaff organizations and data being exported
 
 ## Setup
 
-Create a `.env` file with your Hubstaff refresh token:
+1. Clone the repository:
 
-```env
-HUBSTAFF_REFRESH_TOKEN=your_refresh_token_here
+   ```bash
+   git clone https://github.com/chijoywilliams/hubstaff-api-exporter.git
+   cd hubstaff-api-exporter
