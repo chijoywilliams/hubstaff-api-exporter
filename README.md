@@ -11,8 +11,7 @@ Hubstaff API Exporter automates this workflow. It uses Hubstaff's OAuth 2.0 refr
 ## Features
 
 - Authenticates with Hubstaff through the OAuth 2.0 refresh-token flow
-- Uses a refresh token to request a short-lived access token
-- Handles refresh-token rotation and saves the latest token to a local cache file
+- Uses a refresh token to request an access token
 - Exports Hubstaff organization data
 - Exports Hubstaff project data
 - Exports Hubstaff member data
@@ -20,6 +19,7 @@ Hubstaff API Exporter automates this workflow. It uses Hubstaff's OAuth 2.0 refr
 - Generates structured CSV files for reporting and analysis
 - Creates a Markdown export summary for each completed run
 - Uses environment variables to keep credentials outside source control
+
 
 ## Exported Files
 
